@@ -21,7 +21,7 @@ int main() {
         printf("\t\t\t----MENU----\n");
         printf("\t\t\t------------\n");
         printf("\n\t1. Get all heroes\n");
-        printf("\t2. Sort by Speed (better to worst\n");
+        printf("\t2. Sort by Speed (better to worst)\n");
         printf("\t0. SALIR\n");
         
         printf("\n\tIngrese una opcion: ");
