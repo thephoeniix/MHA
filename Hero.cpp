@@ -1,13 +1,13 @@
-#ifndef FUNCIONES_H_
-#define FUNCIONES_H
+#ifndef HERO_H_
+#define HERO_H
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <vector>
 using namespace std;
 
-class Hero {
-    private:
+
+struct Hero {
     std::string name;
     std::string type;
     std::string quirk;
@@ -16,109 +16,154 @@ class Hero {
     int technique;
     int intelligence;
     int cooperativeness;
+    Hero* nextPower;
+    Hero* prevPower;
+    Hero* nextSpeed;
+    Hero* prevSpeed;
+    Hero* nextTechnique;
+    Hero* prevTechnique;
+    Hero* nextCooperativeness;
+    Hero* prevCooperativeness;
 
-    public:
-    // Constructor
-    Hero(string name, string type, string quirk,
-         int power, int speed, int technique, int intelligence, int cooperativeness)
-        : name(name), type(type), quirk(quirk),
-          power(power), speed(speed), technique(technique),
-          intelligence(intelligence), cooperativeness(cooperativeness) {}
-
-    // Method to convert the Hero object to a string
-    std::string toString() {
-        std::string heroString = "Name: " + name + "\n";
-        heroString += "Type: " + type + "\n";
-        heroString += "Quirk: " + quirk + "\n";
-        heroString += "Power: " + to_string(power) + "\n";
-        heroString += "Speed: " + to_string(speed) + "\n";
-        heroString += "Technique: " + to_string(technique) + "\n";
-        heroString += "Intelligence: " + to_string(intelligence) + "\n";
-        heroString += "Cooperativeness: " + to_string(cooperativeness) + "\n";
-
-        return heroString;
-    }
-
-    int getSpeed() const {
-        return speed;
-    }
-
-    string getName() const {
-        return name;
-    }
-
- 
+    Hero(std::string n, std::string t, std::string q, int p, int s, int tech, int intel, int coop)
+        : name(n), type(t), quirk(q), power(p), speed(s), technique(tech), intelligence(intel), cooperativeness(coop),
+          nextPower(nullptr), prevPower(nullptr), nextSpeed(nullptr), prevSpeed(nullptr),
+          nextTechnique(nullptr), prevTechnique(nullptr), nextCooperativeness(nullptr), prevCooperativeness(nullptr) {}
 };
 
- std::vector<Hero> readHeroesFromFile(const std::string& filename) {
-    std::vector<Hero> heroes;
-    std::ifstream file(filename);
+// Define a tree node for sorting heroes by type
+struct TreeNode {
+    std::string type;
+    Hero* hero;
+    TreeNode* left;
+    TreeNode* right;
 
-    if (!file.is_open()) {
-        std::cout << "Error: Unable to open file " << filename << std::endl;
-        return heroes;
+    TreeNode(std::string t, Hero* h)
+        : type(t), hero(h), left(nullptr), right(nullptr) {}
+};
+
+// Function to insert a hero into the tree based on type
+TreeNode* insert(TreeNode* root, Hero* hero) {
+    if (!root) {
+        return new TreeNode(hero->type, hero);
     }
 
-    string line;
-    while (std::getline(file, line)) {
-        istringstream iss(line);
-        string name, type, quirk;
-        int power, speed, technique, intelligence, cooperativeness;
-
-        if (!(iss >> name >> type >> quirk >> power >> speed >> technique >> intelligence >> cooperativeness)) {
-            cout << "Error: Invalid input in line - " << line << std::endl;
-            continue;
-        }
-
-        heroes.emplace_back(name, type, quirk, power, speed, technique, intelligence, cooperativeness);
+    if (hero->type < root->type) {
+        root->left = insert(root->left, hero);
+    } else {
+        root->right = insert(root->right, hero);
     }
 
-    file.close();
-    return heroes;
-    
-    }
-    
-vector<Hero> merge(std::vector<Hero>& left, vector<Hero>& right) {
-    vector<Hero> result;
-    size_t leftIndex = 0, rightIndex = 0;
+    return root;
+}
 
-    while (leftIndex < left.size() && rightIndex < right.size()) {
-        if (left[leftIndex].getSpeed() > right[rightIndex].getSpeed()) {
-            result.push_back(left[leftIndex]);
-            leftIndex++;
+
+// Function to traverse and display the tree
+void displayTree(TreeNode* root) {
+    if (!root) return;
+    displayTree(root->left);
+    std::cout << "Type: " << root->type << ", Name: " << root->hero->name << std::endl;
+    displayTree(root->right);
+}
+
+class LinkedListNode {
+public:
+    string name;
+    string quirk;
+    LinkedListNode* prev;
+    LinkedListNode* next;
+
+    LinkedListNode(string n, string q) {
+        name = n;
+        quirk = q;
+        prev = nullptr;
+        next = nullptr;
+    }
+};
+
+class DoubleLinkedList {
+public:
+    LinkedListNode* head;
+
+    DoubleLinkedList() {
+        head = nullptr;
+    }
+
+    void insert(string name, string quirk) {
+        LinkedListNode* newNode = new LinkedListNode(name, quirk);
+
+        if (head == nullptr) {
+            head = newNode;
         } else {
-            result.push_back(right[rightIndex]);
-            rightIndex++;
+            LinkedListNode* current = head;
+            
+            while (current->next != nullptr) {
+                current = current->next;
+            }
+            
+            current->next = newNode;
+            newNode->prev = current;
         }
     }
 
-    while (leftIndex < left.size()) {
-        result.push_back(left[leftIndex]);
-        leftIndex++;
+    void sort() {
+        if (head == nullptr || head->next == nullptr) {
+            return;
+        }
+
+        LinkedListNode* current = head;
+        LinkedListNode* nextNode = nullptr;
+        bool swapped = false;
+
+        do {
+            swapped = false;
+            current = head;
+            
+            while (current->next != nullptr) {
+                nextNode = current->next;
+
+                if (current->name > nextNode->name) {
+                    swap(current, nextNode);
+                    swapped = true;
+                } else {
+                    current = current->next;
+                }
+            }
+        } while (swapped);
     }
 
-    while (rightIndex < right.size()) {
-        result.push_back(right[rightIndex]);
-        rightIndex++;
+    void swap(LinkedListNode* a, LinkedListNode* b) {
+        if (a->prev != nullptr) {
+            a->prev->next = b;
+        } else {
+            head = b;
+        }
+
+        if (b->next != nullptr) {
+            b->next->prev = a;
+        }
+        
+        a->next = b->next;
+        b->prev = a->prev;
+        
+        a->prev = b;
+        b->next = a;
     }
 
-    return result;
-}
+    void printList() {
+        LinkedListNode* current = head;
 
-vector<Hero> mergeSort(vector<Hero>& heroes) {
-    if (heroes.size() <= 1) {
-        return heroes;
+        while (current != nullptr) {
+            cout << "Name: "<< current->name<<"," <<endl; 
+            cout <<"Quirk: " << current->quirk << endl;
+            cout << endl;
+            current = current->next;
+        }
     }
 
-    size_t middle = heroes.size() / 2;
-    vector<Hero> left(heroes.begin(), heroes.begin() + middle);
-    vector<Hero> right(heroes.begin() + middle, heroes.end());
+    
+};
 
-    left = mergeSort(left);
-    right = mergeSort(right);
-
-    return merge(left, right);
-}
 
 
 #endif
