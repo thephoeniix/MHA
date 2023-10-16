@@ -25,6 +25,17 @@ struct Hero {
     Hero* nextCooperativeness;
     Hero* prevCooperativeness;
 
+     Hero* prev;  // pointer to the previous element
+    Hero* next;  // pointer to the next element
+
+     // Getter functions
+    std::string getName() { return name; }
+    std::string getType() { return type; }
+    int getPower() { return power; }
+    int getSpeed() { return speed; }
+    int getTechnique() { return technique; }
+    int getCooperativeness() { return cooperativeness; }
+
     Hero(std::string n, std::string t, std::string q, int p, int s, int tech, int intel, int coop)
         : name(n), type(t), quirk(q), power(p), speed(s), technique(tech), intelligence(intel), cooperativeness(coop),
           nextPower(nullptr), prevPower(nullptr), nextSpeed(nullptr), prevSpeed(nullptr),
@@ -55,8 +66,9 @@ TreeNode* insert(TreeNode* root, Hero* hero) {
     }
 
     return root;
-}
 
+    
+}
 
 // Function to traverse and display the tree
 void displayTree(TreeNode* root) {
@@ -66,104 +78,178 @@ void displayTree(TreeNode* root) {
     displayTree(root->right);
 }
 
-class LinkedListNode {
+class DoublyLinkedList {
 public:
-    string name;
-    string quirk;
-    LinkedListNode* prev;
-    LinkedListNode* next;
+    Hero* head;
+    Hero* tail;
 
-    LinkedListNode(string n, string q) {
-        name = n;
-        quirk = q;
-        prev = nullptr;
-        next = nullptr;
-    }
-};
-
-class DoubleLinkedList {
-public:
-    LinkedListNode* head;
-
-    DoubleLinkedList() {
+    DoublyLinkedList() {
         head = nullptr;
+        tail = nullptr;
     }
 
-    void insert(string name, string quirk) {
-        LinkedListNode* newNode = new LinkedListNode(name, quirk);
-
+    void insert(Hero* hero) {
         if (head == nullptr) {
-            head = newNode;
+            head = hero;
+            tail = hero;
         } else {
-            LinkedListNode* current = head;
-            
-            while (current->next != nullptr) {
-                current = current->next;
-            }
-            
-            current->next = newNode;
-            newNode->prev = current;
+            hero->prev = tail;
+            tail->next = hero;
+            tail = hero;
         }
     }
 
-    void sort() {
-        if (head == nullptr || head->next == nullptr) {
-            return;
-        }
-
-        LinkedListNode* current = head;
-        LinkedListNode* nextNode = nullptr;
-        bool swapped = false;
-
-        do {
-            swapped = false;
-            current = head;
-            
-            while (current->next != nullptr) {
-                nextNode = current->next;
-
-                if (current->name > nextNode->name) {
-                    swap(current, nextNode);
-                    swapped = true;
-                } else {
-                    current = current->next;
-                }
-            }
-        } while (swapped);
-    }
-
-    void swap(LinkedListNode* a, LinkedListNode* b) {
-        if (a->prev != nullptr) {
-            a->prev->next = b;
-        } else {
-            head = b;
-        }
-
-        if (b->next != nullptr) {
-            b->next->prev = a;
-        }
-        
-        a->next = b->next;
-        b->prev = a->prev;
-        
-        a->prev = b;
-        b->next = a;
-    }
-
-    void printList() {
-        LinkedListNode* current = head;
+    void displayList() {
+        Hero* current = head;
 
         while (current != nullptr) {
-            cout << "Name: "<< current->name<<"," <<endl; 
-            cout <<"Quirk: " << current->quirk << endl;
-            cout << endl;
+            cout << current->name << endl;
             current = current->next;
         }
     }
 
-    
+    void sortByPower() {
+        if (head == nullptr || head == tail) {
+            return;
+        }
+
+        bool sorted = false;
+        while (!sorted) {
+            sorted = true;
+            Hero* current = head;
+
+            while (current->next != nullptr) {
+                if (current->power < current->next->power) {
+                    swap(current, current->next);
+                    sorted = false;
+                }
+                current = current->next;
+            }
+        }
+    }
+
+    void sortBySpeed() {
+        if (head == nullptr || head == tail) {
+            return;
+        }
+
+        bool sorted = false;
+        while (!sorted) {
+            sorted = true;
+            Hero* current = head;
+
+            while (current->next != nullptr) {
+                if (current->speed < current->next->speed) {
+                    swap(current, current->next);
+                    sorted = false;
+                }
+                current = current->next;
+            }
+        }
+    }
+
+    void sortByTechnique() {
+        if (head == nullptr || head == tail) {
+            return;
+        }
+
+        bool sorted = false;
+        while (!sorted) {
+            sorted = true;
+            Hero* current = head;
+
+            while (current->next != nullptr) {
+                if (current->technique < current->next->technique) {
+                    swap(current, current->next);
+                    sorted = false;
+                }
+                current = current->next;
+            }
+        }
+    }
+
+    void sortByIntelligence() {
+        if (head == nullptr || head == tail) {
+            return;
+        }
+
+        bool sorted = false;
+        while (!sorted) {
+            sorted = true;
+            Hero* current = head;
+
+            while (current->next != nullptr) {
+                if (current->intelligence < current->next->intelligence) {
+                    swap(current, current->next);
+                    sorted = false;
+                }
+                current = current->next;
+            }
+        }
+    }
+
+    void sortByCooperativeness() {
+        if (head == nullptr || head == tail) {
+            return;
+        }
+
+        bool sorted = false;
+        while (!sorted) {
+            sorted = true;
+            Hero* current = head;
+
+            while (current->next != nullptr) {
+                if (current->cooperativeness < current->next->cooperativeness) {
+                    swap(current, current->next);
+                    sorted = false;
+                }
+                current = current->next;
+            }
+        }
+    }
+
+    void swap(Hero* a, Hero* b) {
+        Hero* temp = new Hero("", "", "", 0, 0, 0, 0, 0);
+        temp->name = a->name;
+        temp->type = a->type;
+        temp->quirk = a->quirk;
+        temp->power = a->power;
+        temp->speed = a->speed;
+        temp->technique = a->technique;
+        temp->intelligence = a->intelligence;
+        temp->cooperativeness = a->cooperativeness;
+
+        a->name = b->name;
+        a->type = b->type;
+        a->quirk = b->quirk;
+        a->power = b->power;
+        a->speed = b->speed;
+        a->technique = b->technique;
+        a->intelligence = b->intelligence;
+        a->cooperativeness = b->cooperativeness;
+
+        b->name = temp->name;
+        b->type = temp->type;
+        b->quirk = temp->quirk;
+        b->power = temp->power;
+        b->speed = temp->speed;
+        b->technique = temp->technique;
+        b->intelligence = temp->intelligence;
+        b->cooperativeness = temp->cooperativeness;
+    }
 };
 
+Hero* searchByName(TreeNode* root, const std::string& name) {
+    if (root == nullptr || root->hero->name == name) {
+        return (root == nullptr) ? nullptr : root->hero;
+    }
+
+    if (name < root->hero->name) {
+        return searchByName(root->left, name);
+    } else {
+        return searchByName(root->right, name);
+    }
+}
 
 
 #endif
