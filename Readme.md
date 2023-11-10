@@ -337,10 +337,119 @@ std::string line;
   
  ### IMPLEMENTA MECANISMOS DE ESCRITURA DE ESCRITURA DE ARCHIVOS CORRECTOS Y ÚTILES DENNTRO DE UN PROGRAMA
 
- *falta implementar*
+ The characters are register in a `mha.txt` in which are read at the beginning of the program, the new hero will be upload in this same file.
 
+In this function the User will choose to edit an exiting hero or upload a new one. 
+  ```c++
+void uploadOrEditHero(TreeNode*& typeTree, DoublyLinkedList& dl) {
+    int choice;
+    cout <<endl;
+    cout << "Choose an option:" << endl;
+    cout << "1. Upload a new hero" << endl;
+    cout << "2. Edit an existing hero" << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
+```
+If the user choose 1, the user will input each feature.
 
+```c++
+    if (choice == 1) {
+            //Upload a new hero
+        string name, type, quirk;
+        int power, speed, technique, intelligence, cooperativeness;
 
+        cout << "Enter the hero's details:" << endl;
+        cout << "Separated by - on compound Name or Quirk ex. Red-Riot, hell-flame"<< endl;
+        cout << "Name: ";
+        cin >> name;
+        [...]
+```
+
+Then create a newHero with the specific attributes of Hero.
+```c++
+        Hero newHero(name, type, quirk, power, speed, technique, intelligence, cooperativeness);
+```
+
+The code will get the value for each character separated by spaces, and save it on `mha.txt`. 
+
+```c++    
+        ofstream outFile("mha.txt", ios::app);
+        if (outFile.is_open()) {
+            outFile << endl << newHero.name << " " << newHero.type << " " << newHero.quirk << " "
+                    << newHero.power << " " << newHero.speed << " " << newHero.technique << " "
+                    << newHero.intelligence << " " << newHero.cooperativeness;
+            outFile.close();
+            cout << "New hero uploaded successfully!" << endl;
+        } else {
+            cerr << "Failed to open the file for writing." << endl;
+        }
+```
+
+If the user choose 2, the user will edit each feature. The user will input the name of the Hero and using the *searchByName* function will search for the Hero in the list. 
+
+```c++ 
+
+else if (choice == 2) {
+        
+        string searchName;
+        cout <<endl << "Enter the name of the hero you want to edit: ";
+        cin >> searchName;
+        
+        Hero* foundHero = searchByName(typeTree, searchName);
+```
+When found the hero info, will be display and then the user will update the hero´s details.
+
+```c++
+        cout << endl;
+        cout << "Hero details before editing:" << endl;
+        displayHeroDetails(*foundHero);
+        cout << endl;
+
+        if (foundHero != nullptr) {
+            // the user to update the hero's details
+            cout << endl;
+            cout << "Enter updated details for " << foundHero->getName() << ":" << endl;
+            cout << endl;
+            cout << "Separated by - on compound Name or Quirk ex. Red-Riot, hell-flame"<< endl;
+            cout << "Name: ";
+
+```
+
+The code will get the value for the character separated by spaces, and save it on `mha.txt`. 
+```c++
+ ofstream outFile("mha.txt");
+            if (outFile.is_open()) {
+                Hero* current = dl.head;
+                while (current != nullptr) {
+                    outFile << current->name << " " << current->type << " " << current->quirk << " "
+                            << current->power << " " << current->speed << " " << current->technique << " "
+                            << current->intelligence << " " << current->cooperativeness << endl;
+                    current = current->next;
+                }
+  outFile.close();
+
+```
+Then it will confirm the update and display the new Hero details or print that failed.
+
+```c++
+                cout << endl << "Hero details updated successfully!" << endl;
+                cout << endl << "Hero details after editing:" << endl;
+                displayHeroDetails(*foundHero);
+            } else {
+                cerr << "Failed to open the file for writing." << endl;
+            }
+```
+
+If the Hero doesn´t exist or is annvalid input it will print:
+
+```c++
+        } else {
+            cout << "Hero not found." << endl;
+        }
+    } else {
+        cout << "Invalid choice." << endl;
+    }
+```
 
 **You can use this repository to access information about My Hero Academia.**
 
