@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <queue>
+#include <iomanip>
 using namespace std;
 
 //Hero Structure 
@@ -44,15 +45,27 @@ struct Hero {
           nextTechnique(nullptr), prevTechnique(nullptr), nextCooperativeness(nullptr), prevCooperativeness(nullptr) {}
 };
 
+void displayHeroDetails(const Hero& hero) {
+    cout << "Name: " << hero.name << endl;
+    cout << "Type: " << hero.type << endl;
+    cout << "Quirk: " << hero.quirk << endl;
+    cout << "Power: " << hero.power << endl;
+    cout << "Speed: " << hero.speed << endl;
+    cout << "Technique: " << hero.technique << endl;
+    cout << "Intelligence: " << hero.intelligence << endl;
+    cout << "Cooperativeness: " << hero.cooperativeness << endl;
+}
+
 //Define the TreeNode for the Binary Tree 
 struct TreeNode {
-    std::string type;
+    string type;
+    string name;
     Hero* hero;
     TreeNode* left;
     TreeNode* right;
 
   //Constructor to initialize the TreeNode
-    TreeNode(std::string t, Hero* h)
+    TreeNode( string t, Hero* h)
         : type(t), hero(h), left(nullptr), right(nullptr) {}
 };
 
@@ -71,8 +84,9 @@ TreeNode* insert(TreeNode* root, Hero* hero) {
 
     return root;
 
-    
 }
+
+
 
 //Funtion to display the Binary Tree
 void displayTree(TreeNode* root) {
@@ -290,6 +304,7 @@ Hero* searchByName(TreeNode* root, const std::string& name) {
 //Function to upload or edit a Hero´s infomation 
 void uploadOrEditHero(TreeNode*& typeTree, DoublyLinkedList& dl) {
     int choice;
+    cout <<endl;
     cout << "Choose an option:" << endl;
     cout << "1. Upload a new hero" << endl;
     cout << "2. Edit an existing hero" << endl;
@@ -302,21 +317,24 @@ void uploadOrEditHero(TreeNode*& typeTree, DoublyLinkedList& dl) {
         int power, speed, technique, intelligence, cooperativeness;
 
         cout << "Enter the hero's details:" << endl;
-        cout << "Name: (separated by - on compound names) ";
+        cout << "Separated by - on compound Name or Quirk ex. Red-Riot, hell-flame"<< endl;
+        cout << "Name: ";
         cin >> name;
+        cout << "villain, pro-hero, teacher, or student"<< endl;
         cout << "Type:  ";
         cin >> type;
         cout << "Quirk: ";
         cin >> quirk;
-        cout << "Power: (0-5)";
+        cout << "Range 0 being least and 5 being most (0-5)"<< endl;
+        cout << "Power: ";
         cin >> power;
-        cout << "Speed: (0-5)";
+        cout << "Speed: ";
         cin >> speed;
-        cout << "Technique: (0-5)";
+        cout << "Technique: ";
         cin >> technique;
-        cout << "Intelligence: (0-5)";
+        cout << "Intelligence: ";
         cin >> intelligence;
-        cout << "Cooperativeness: (0-5)";
+        cout << "Cooperativeness: ";
         cin >> cooperativeness;
 
         
@@ -335,31 +353,44 @@ void uploadOrEditHero(TreeNode*& typeTree, DoublyLinkedList& dl) {
         }
 
     } else if (choice == 2) {
-            //Edit an existinng Hero 
+            //Edit an existing Hero 
+        
+        
         string searchName;
-        cout << "Enter the name of the hero you want to edit: ";
+        cout <<endl << "Enter the name of the hero you want to edit: ";
         cin >> searchName;
-
+        
         
         Hero* foundHero = searchByName(typeTree, searchName);
+
+        cout << endl;
+        cout << "Hero details before editing:" << endl;
+        displayHeroDetails(*foundHero);
+        cout << endl;
+
         if (foundHero != nullptr) {
             // Prompt the user to update the hero's details
+            cout << endl;
             cout << "Enter updated details for " << foundHero->getName() << ":" << endl;
+            cout << endl;
+            cout << "Separated by - on compound Name or Quirk ex. Red-Riot, hell-flame"<< endl;
             cout << "Name: ";
             cin >> foundHero->name;
-            cout << "Type: (0-5) ";
+            cout << "villain, pro-hero, teacher, or student" << endl;
+            cout << "Type: ";
             cin >> foundHero->type;
-            cout << "Quirk :(0-5) ";
+            cout << "Quirk : ";
             cin >> foundHero->quirk;
-            cout << "Power: (0-5)";
+            cout << "Range 0 being least and 5 being most (0-5)"<< endl;
+            cout << "Power: ";
             cin >> foundHero->power;
-            cout << "Speed: (0-5)";
+            cout << "Speed: ";
             cin >> foundHero->speed;
-            cout << "Technique: (0-5)";
+            cout << "Technique: ";
             cin >> foundHero->technique;
-            cout << "Intelligence: (0-5)";
+            cout << "Intelligence: ";
             cin >> foundHero->intelligence;
-            cout << "Cooperativeness: (0-5)";
+            cout << "Cooperativeness: ";
             cin >> foundHero->cooperativeness;
 
           
@@ -373,7 +404,9 @@ void uploadOrEditHero(TreeNode*& typeTree, DoublyLinkedList& dl) {
                     current = current->next;
                 }
                 outFile.close();
-                cout << "Hero details updated successfully!" << endl;
+                cout << endl << "Hero details updated successfully!" << endl;
+                cout << endl << "Hero details after editing:" << endl;
+                displayHeroDetails(*foundHero);
             } else {
                 cerr << "Failed to open the file for writing." << endl;
             }

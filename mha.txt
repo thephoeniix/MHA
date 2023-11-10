@@ -1,5 +1,5 @@
 Dynamight student explosion 4 4 3 3 1
-Deku student all-for-one 4 4 3 3 4
+Deku student all-for-onne 4 4 3 4 5
 Shoto student half-cold-half-hot 4 3 4 4 2
 Uravity student zero-gravity 1 2 4 2 4
 Ingenium student engine 3 4 2 3 2
@@ -10,11 +10,11 @@ Fat-Gum pro-hero fat-absorption 5 2 4 4 5
 Mirko pro-hero rabbit 5 4 2 2 4
 Eraser-Head teacher erasure 2 3 5 3 2
 Midnight teacher somnambullist 1 2 4 2 2
-Present-Mic teacher voice 2 1 3 4 4 
-All-Might teacher all-for-one/quirckless 5 5 5 5
+Present-Mic teacher voice 2 1 3 4 4
+All-Might teacher all-for-one/quirckless 5 5 5 5 4
 Tsuyu-Asui student frog 3 3 3 3 4
 Mount-Lady pro-hero gigantification 4 3 2 2 3
-Red-Tornado pro-hero wind manipulation 4 3 4 3 4
+Red-Tornado pro-hero wind 0 3 2 2 3
 Kamui-Woods pro-hero lignokinesis 3 3 4 3 3
 Mandalay pro-hero telepathy 2 2 3 3 4
 Edgeshot pro-hero foldabody 5 4 5 4 4
@@ -68,7 +68,7 @@ Tailman student tail 3 2 3 3 4
 Neito-Monoma student copy 2 3 4 4 1
 Mina-Ashido student acid 3 3 4 3 3
 Shoji student dupli-arms 3 3 4 3 3
-Shiketsu student wave motion 3 2 3 3 2
+Shiketsu student wave 0 3 4 3 3
 Dabi villain cremation 3 4 3 3 2
 Himiko-Toga villain transform 3 3 3 4 2
 Twice villain double 3 3 4 3 1
@@ -99,3 +99,4 @@ Ibara-Shiozaki student vine 3 2 4 3 3
 Slidin-Go villain unknown 3 3 3 3 2
 Tensei-Iida pro-hero engine 4 3 4 3 4
 Momo-Yaoyorozu student creation 3 2 4 4 4
+Spiderman pro-hero spider-traits 3 5 5 5 5

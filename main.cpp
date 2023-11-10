@@ -150,6 +150,7 @@ do {
             }
 
         case 8: {
+            
             uploadOrEditHero(typeTree, dl);
             system("pause>nul");
             break;
