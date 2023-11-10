@@ -63,6 +63,7 @@ do {
     printf("\t5. Sorted by intelligence\n");
     printf("\t6. Search for a cooperativeness\n");
     printf("\t7. Search for a name\n");
+    printf("\t8. Edit or create a new hero\n");
     printf("\t0. Out\n");
     printf("\tpress any key to continue\n");
 
@@ -128,14 +129,18 @@ do {
               Hero* foundHero = searchByName(typeTree, searchName);
              if (foundHero != nullptr) {
             cout << "Character found!" << endl;
-            // Display the hero's details here using the foundHero pointer
+            
             cout << "Name: " << foundHero->getName() << endl;
             cout << "Type: " << foundHero->getType() << endl;
             cout << "Power: " << foundHero->getPower() << endl;
             cout << "Speed: " << foundHero->getSpeed() << endl;
             cout << "Technique: " << foundHero->getTechnique() << endl;
             cout << "Cooperativeness: " << foundHero->getCooperativeness() << endl;
+
+        
+
         }
+       
         else {
             cout << "Character not found!" << endl;
         }
@@ -143,6 +148,14 @@ do {
                 system("pause>nul");
                 break;
             }
+
+        case 8: {
+            uploadOrEditHero(typeTree, dl);
+            system("pause>nul");
+            break;
+
+
+        }
 
         case 0:
             repetir = FALSE;

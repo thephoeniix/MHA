@@ -83,7 +83,7 @@ Mimic villain mimicry 3 3 4 3 2
 Re-Destro villain stress 4 3 4 3 2
 Rikiya-Katsukame villain meatball 3 3 3 3 2
 Geten villain thermogenesis 4 3 4 3 2
-Jurota-Shishida studen beast 4 3 4 3 3
+Jurota-Shishida student beast 4 3 4 3 3
 Hiryu-Rin student scales 3 4 3 3 4
 Sekijiro-Kan student larceny 3 3 4 3 4
 Kinoko-Komori student mushroom 2 2 3 3 4
