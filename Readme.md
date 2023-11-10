@@ -2,7 +2,7 @@
 ![image](https://github.com/thephoeniix/MHA/assets/73914621/22cdbf1b-37aa-437c-8bb3-08f86f440991)
 
 
-This project is based on the popular anime and manga series My Hero Academia. The database enables users to easily sort characters with unique traits. Then is expected to create missions and send the perfect team based on their strength and weaknesses. It also allows users to search for heroes by name.
+This project is based on the popular anime and manga series My Hero Academia. The database enables users to easily sort characters with unique traits. It also allows users to search for heroes by name. Add heroes an even edit new heroes already in the database. 
 
 This repository contains information and characteristics of each character such as name, type (villain, pro-hero, teacher, or student) quirk, power, speed, technique, intelligence, and cooperativeness. 
 
@@ -18,8 +18,6 @@ This repository contains information and characteristics of each character such 
 - **Cooperativeness**: 5
 
 
-
-
  ## SICT0302B: TOMA DECISIONES
  ### SELECCIONA Y USA UNA ESTRUCTURA LINEAL ADEACUADA
  The database is implemented using a linked list to store the heroes. This allows for efficient insertion, deletion, and search operations
@@ -32,11 +30,11 @@ The bubble sort algorithm operates by continuously comparing neighboring element
  ### USA UN ÁRBOL ADECUADO PARA RESOLVER UN PROBLEMA
 The database also uses a binary search tree to store the heroes by type. This allows for efficient sorting operations.
 The function in where I use BST `Hero.h` in the class of `TreeNode`
-  
-  
+ 
+ 
  ## SICT0301B: EVALÚA LOS COMPONENTES
- ### PRESENTA CASOS PRUEBA
- ### How to use the database
+ ### PRESENTA CASOS PRUEBA:
+#### _How to use the database_
  To use the database, simply compile and run the main.cpp file. The program will then display a menu with the following options:
    
  1. Sorted by type
@@ -46,11 +44,12 @@ The function in where I use BST `Hero.h` in the class of `TreeNode`
  5. Sorted by intelligence
  6. Sorted by cooperativeness
  7. Search for a name
- 8. Out
+ 8. Edit or Create New hero 
+ 9. Out
   
  To select an option, simply enter the corresponding number and press enter.
   
- *Example usage*
+ ##### *Example usage*
 
 To sort the character by type, enter 1 and press enter. The program will then display a list of all character, sorted by type.
   ```
@@ -152,6 +151,117 @@ Enter the name of the character: Kari
 Character not found!
 ```
 
+To Edit or Create New hero, enter 8 and press enter. The program will then display
+
+```
+Choose an option:
+1. Upload a new hero
+2. Edit an existing hero
+Enter your choice: 1
+
+```
+To Upload a new hero, enter 1 and press enter. The program will then display
+
+```
+Choose an option:
+1. Upload a new hero
+2. Edit an existing hero
+Enter your choice: 1
+Enter the hero's details:
+Separated by - on compound Name or Quirk ex. Red-Riot, hell-flame
+Name: Spiderman
+
+```
+Then the user will enter a Name in this case *Spiderman*, and press enter. The program will them display all the next features and the user should fill each. 
+
+```
+Separated by - on compound Name or Quirk ex. Red-Riot, hell-flame
+Name: Spiderman
+villain, pro-hero, teacher, or student
+Type:  pro-hero
+Quirk: spider-traits
+Range 0 being least and 5 being most (0-5)
+Power: 3
+Speed: 5
+Technique: 5
+Intelligence: 5
+Cooperativeness: 5
+New hero uploaded successfully!
+
+```
+
+```
+Choose an option:
+1. Upload a new hero
+2. Edit an existing hero
+Enter your choice: 2
+```
+To Edit an exiting hero, enter 2 and press enter. The program will then display
+
+```
+Enter the name of the hero you want to edit: Deku
+
+Hero details before editing:
+Name: Deku
+Type: student
+Quirk: all-for-one
+Power: 4
+Speed: 4
+Technique: 3
+Intelligence: 3
+Cooperativeness: 4
+
+
+Enter updated details for Deku:
+Separated by - on compound Name or Quirk ex. Red-Riot, hell-flame
+Name: 
+
+```
+Then the user will enter the new name of the hero in this case *Midoriya*, and press enter. The program will then display all the next features and the user should fill each. 
+
+```
+Enter the name of the hero you want to edit: Deku
+
+Hero details before editing:
+Name: Deku
+Type: student
+Quirk: all-for-one
+Power: 4
+Speed: 4
+Technique: 3
+Intelligence: 3
+Cooperativeness: 4
+
+
+Enter updated details for Deku:
+Separated by - on compound Name or Quirk ex. Red-Riot, hell-flame
+Name: Midoriya
+villain, pro-hero, teacher, or student
+Type: pro-hero
+Quirk : all-for-one
+Range 0 being least and 5 being most (0-5)
+Power: 5
+Speed: 5
+Technique: 3
+Intelligence: 5
+Cooperativeness: 5
+```
+
+Finally, the program will display what is show next, to confirm the information is saved and the new details of the hero edited. 
+
+```
+Hero details updated successfully!
+
+Hero details after editing:
+Name: Midoriya
+Type: pro-hero
+Quirk: all-for-one
+Power: 5
+Speed: 5
+Technique: 3
+Intelligence: 5
+Cooperativeness: 5
+```
 
 Enter 0 and press enter. The program will end.
 
