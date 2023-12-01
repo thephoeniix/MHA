@@ -18,19 +18,34 @@ This repository contains information and characteristics of each character such 
 - **Cooperativeness**: 5
 
 
- ## SICT0302B: TOMA DECISIONES
+ ## SICT0302: TOMA DECISIONES
  ### SELECCIONA Y USA UNA ESTRUCTURA LINEAL ADEACUADA
  The database is implemented using a linked list to store the heroes. This allows for efficient insertion, deletion, and search operations
-
   
  ### SELECCIONA UN ALGORITMO DE ORDENAMIENTO ADECUADO
 The bubble sort algorithm operates by continuously comparing neighboring elements within the list and exchanging their positions if they are unordered. The bubble sort algorithm is a simple and inefficient sorting algorithm, but it is easy to implement. It is also a good algorithm for sorting small linked lists.
   
-  
  ### USA UN ÁRBOL ADECUADO PARA RESOLVER UN PROBLEMA
 The database also uses a binary search tree to store the heroes by type. This allows for efficient sorting operations.
 The function in where I use BST `Hero.h` in the class of `TreeNode`
- 
+
+### Selecciona una estructura de datos adecuada al problema y lo usa correctamente.
+- **Struct Hero:**
+  This structure stores the *attributes* of a *hero* and is used to represent each node in the `doubly linked list` and as the value stored in nodes of the `binary tree`.
+  It is used correctly to organize and represent information associated with each hero.
+- **Struct TreeNode:**
+  Represents a node in the binary tree that organizes heroes by their type.
+  The structure stores a pointer to a `Hero` object, allowing a direct connection between tree nodes and individual heroes.
+  It is used appropriately to organize heroes in a hierarchical structure based on their type.
+- **Class DoublyLinkedList:**
+  This class is used to implement a doubly linked list, where heroes are stored.
+  The class methods, such as `insert`, `displayList`, `sortByPower`, etc., are applied correctly to manage and manipulate the list of heroes.
+- **Binary Tree for Organizing Heroes by Type:**
+  A binary tree is used to organize heroes by their type. The `insert` function is responsible for inserting a hero into the tree based on its type.
+  This facilitates efficient search and organization of heroes in the program.
+- **Queue for Name-Based Search:**
+  The `searchByName` function uses a queue to perform a name-based search in the binary tree. This data structure is appropriate for conducting a level-order traversal in the tree.
+
  
  ## SICT0301B: EVALÚA LOS COMPONENTES
  ### PRESENTA CASOS PRUEBA:
@@ -263,34 +278,36 @@ Cooperativeness: 5
 
 Enter 0 and press enter. The program will end.
 
+## SICT0301: Evalúa los componentes
 
-### ANÁLISIS DE COMPLEJIDAD DEL CODIGO
+### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
+- Sorting functions in the `DoubleLinkedList` are `sortByPower`, `sortBySpeed`, `sortByTechnique`, `sortByIntelligence`, `sortByCooperativeness`:
+ -These sorting functions use the bubble sort algorithm, which has a time complexity of `O(n^2)` in the worst case. In the best case, if the list is already sorted, the time complexity is O(n).
+- The time complexity for the `TreeNode` structure is mainly determined by the insertion operation and can be described as `O(log n)` on average and `O(n)` in the worst case. The space complexity is `O(log n)` due to the recursive nature of the insertion function.
+ 
+### Hace un análisis de complejidad correcto y completo todas las estructuras de datos y cada uno de sus usos en el programa.
 Sorting a list of heroes uses a time complexity of `O(n log n)` where n represennts the nnumber of heroes. Searching for a hero in a sorted list uses a time complexity of `O(log n)`. 
 Overall the code has a **worst case scenario** the time complexity is `O(n log n)`. However, the performance may be more efficient or defficient dependinng on the usage annd input data. For instance,  the list of heroes may be already sorted, annd that would reduce the time complexity to `O (log n)`. 
-   
- ### ANÁLISIS DE COMPLEJIDAD DE CADA FUNCIÓN
-There are various functions in the code:
+  
+### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
 - `insert` in the `TreeNode`:
- -If the tree is highly unbalanced it can be O(n), and in the best case is O(log(n))
+ -If the tree is highly unbalanced it can be `O(n)`, and in the best case is `O(log(n))`.
 - `displayTree` function in the `TreeNode`:
- -This function performs an in-order traversal of the binary search tree, so the time complexity is O(n)
--Sorting functions in the `DoubleLinkedList` are `sortByPower`, `sortBySpeed`, `sortByTechnique`, `sortByIntelligence`, `sortByCooperativeness`:
- -These sorting functions use the bubble sort algorithm, which has a time complexity of O(n^2) in the worst case. In the best case, if the list is already sorted, the time complexity is O(n).
+ -This function performs an in-order traversal of the binary search tree, so the time complexity is `O(n)`
 - `searchByName` function:
--These function uses Breadth-First-Search.  In the worst case, it needs transverse all nodes, so the complexity is O(n), where n is the number of nodes. 
--In the best case the time complexity is O(1)
+-These function uses Breadth-First-Search.  In the worst case, it needs transverse all nodes, so the complexity is `O(n)`, where n is the number of nodes. 
+-In the best case the time complexity is `O(1)`
 -`uploadOrEditHero` funnction:
 -These functions imply an input/output of heroes, which is generally a low process in comparison with other functions.  
--If the user uploads a new hero, the time complexity is O(1) as it involves only inserting at the end of the list.  
--If the user edits an existing hero, the time complexity is O(n), where n is the number of heros.
-
+  - If the user uploads a new hero, the time complexity is `O(1)` as it involves only inserting at the end of the list.
+  -  If the user edits an existing hero, the time complexity is `O(n)`, where n is the number of heros.
 
   
-## SISCT0303B: IMPLEMENTA ACCIONES CIENTÍFICAS
+## SISCT0303: IMPLEMENTA ACCIONES CIENTÍFICAS
  ### IMPLEMENTA MECANISMOS PARA CONSULTAR INFORMACIÓN DE LAS ESTRUCTURAS CORRECTAS Y ÚTILES DENTRO DE UN PROGRAMA
  The program has an option in which it searches the character by the name in the list. (option 7). Uses a tree to sort the character by student, teacher, pro-hero or villain (option 1). And Linked List to sort (best-worst) by power, speed, technique, intelligence, cooperativeness. (option 2-6).
  
- ### IMPLEMENtA MECANNISMOS DE LECTURA DE ARCHIVOS CORRECTOS Y ÚTILES DENTRO DE UN PROGRAMA 
+ ### IMPLEMENTA MECANNISMOS DE LECTURA DE ARCHIVOS CORRECTOS Y ÚTILES DENTRO DE UN PROGRAMA 
  The characters are register in a `mha.txt` in which are read at the beginning of the program. 
  ``` c++
 ifstream inputFile("mha.txt");
