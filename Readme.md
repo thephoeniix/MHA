@@ -18,19 +18,34 @@ This repository contains information and characteristics of each character such 
 - **Cooperativeness**: 5
 
 
- ## SICT0302B: TOMA DECISIONES
+ ## SICT0302: TOMA DECISIONES
  ### SELECCIONA Y USA UNA ESTRUCTURA LINEAL ADEACUADA
  The database is implemented using a linked list to store the heroes. This allows for efficient insertion, deletion, and search operations
-
   
  ### SELECCIONA UN ALGORITMO DE ORDENAMIENTO ADECUADO
 The bubble sort algorithm operates by continuously comparing neighboring elements within the list and exchanging their positions if they are unordered. The bubble sort algorithm is a simple and inefficient sorting algorithm, but it is easy to implement. It is also a good algorithm for sorting small linked lists.
   
-  
  ### USA UN ÁRBOL ADECUADO PARA RESOLVER UN PROBLEMA
 The database also uses a binary search tree to store the heroes by type. This allows for efficient sorting operations.
 The function in where I use BST `Hero.h` in the class of `TreeNode`
- 
+
+### Selecciona una estructura de datos adecuada al problema y lo usa correctamente.
+- **Struct Hero:**
+  This structure stores the *attributes* of a *hero* and is used to represent each node in the `doubly linked list` and as the value stored in nodes of the `binary tree`.
+  It is used correctly to organize and represent information associated with each hero.
+- **Struct TreeNode:**
+  Represents a node in the binary tree that organizes heroes by their type.
+  The structure stores a pointer to a `Hero` object, allowing a direct connection between tree nodes and individual heroes.
+  It is used appropriately to organize heroes in a hierarchical structure based on their type.
+- **Class DoublyLinkedList:**
+  This class is used to implement a doubly linked list, where heroes are stored.
+  The class methods, such as `insert`, `displayList`, `sortByPower`, etc., are applied correctly to manage and manipulate the list of heroes.
+- **Binary Tree for Organizing Heroes by Type:**
+  A binary tree is used to organize heroes by their type. The `insert` function is responsible for inserting a hero into the tree based on its type.
+  This facilitates efficient search and organization of heroes in the program.
+- **Queue for Name-Based Search:**
+  The `searchByName` function uses a queue to perform a name-based search in the binary tree. This data structure is appropriate for conducting a level-order traversal in the tree.
+
  
  ## SICT0301B: EVALÚA LOS COMPONENTES
  ### PRESENTA CASOS PRUEBA:
@@ -69,23 +84,23 @@ To sort the character by type, enter 1 and press enter. The program will then di
 To sort the character by power, enter 2 and press enter. The program will then display a list of all heroes, character by power.
 ```
 Heroes sorted by power:
-Endeavor
-Hawks
-All-Might
-One-For-All
-Mirko
-[...]
+Name: Endeavor, Power: 5
+Name: Hawks, Power: 5
+Name: Fat-Gum, Power: 5
+Name: Mirko, Power: 5
+Name: All-Might, Power: 5
+[...] 
 
 ```
 
 To sort the character by speed, enter 3 and press enter. The program will then display a list of all heroes, character by speed.
 ```
 Heroes sorted by speed:
-Endeavor
-Hawks
-All-Might
-One-For-All
-Gran-Torino
+Name: Endeavor, Speed: 5
+Name: Hawks, Speed: 5
+Name: All-Might, Speed: 5
+Name: One-For-All, Speed: 5
+Name: Gran-Torino, Speed: 5
 [...]
 
 ```
@@ -93,35 +108,33 @@ Gran-Torino
 To sort the character by technique, enter 4 and press enter. The program will then display a list of all characters, sorted by technique.
 ```
 Heroes sorted by technique:
-Endeavor
-Hawks
-All-Might
-One-For-All
-Edgeshot
+Name: Endeavor, Technique: 5
+Name: Hawks, Technique: 5
+Name: All-Might, Technique: 5
+Name: One-For-All, Technique: 5
+Name: Spiderman, Technique: 5
 [...]
-
 ```
 
 To sort the character by intelligence, enter 5 and press enter. The program will then display a list of all characters, sorted by intelligence.
 ```
 Heroes sorted by intelligence:
-Hawks
-All-Might
-One-For-All
-Overhaul
-Endeavor
+Name: Hawks, Intelligence: 5
+Name: All-Might, Intelligence: 5
+Name: One-For-All, Intelligence: 5
+Name: Spiderman, Intelligence: 5
+Name: Overhaul, Intelligence: 5
 [...]
-
 ```
 
 To sort the character by cooperativeness, enter 6 and press enter. The program will then display a list of all characters, sorted by cooperativeness.
 ```
 Heroes sorted by cooperativeness:
-Hawks
-Fat-Gum
-All-Might
-Edgeshot
-Suneater
+Name: Hawks, Cooperativeness: 5
+Name: Spiderman, Cooperativeness: 5
+Name: Fat-Gum, Cooperativeness: 5
+Name: Deku, Cooperativeness: 5
+Name: All-Might, Cooperativeness: 4
 [...]
 
 ```
@@ -265,34 +278,36 @@ Cooperativeness: 5
 
 Enter 0 and press enter. The program will end.
 
+## SICT0301: Evalúa los componentes
 
-### ANÁLISIS DE COMPLEJIDAD DEL CODIGO
+### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
+- Sorting functions in the `DoubleLinkedList` are `sortByPower`, `sortBySpeed`, `sortByTechnique`, `sortByIntelligence`, `sortByCooperativeness`:
+ -These sorting functions use the bubble sort algorithm, which has a time complexity of `O(n^2)` in the worst case. In the best case, if the list is already sorted, the time complexity is O(n).
+- The time complexity for the `TreeNode` structure is mainly determined by the insertion operation and can be described as `O(log n)` on average and `O(n)` in the worst case. The space complexity is `O(log n)` due to the recursive nature of the insertion function.
+ 
+### Hace un análisis de complejidad correcto y completo todas las estructuras de datos y cada uno de sus usos en el programa.
 Sorting a list of heroes uses a time complexity of `O(n log n)` where n represennts the nnumber of heroes. Searching for a hero in a sorted list uses a time complexity of `O(log n)`. 
 Overall the code has a **worst case scenario** the time complexity is `O(n log n)`. However, the performance may be more efficient or defficient dependinng on the usage annd input data. For instance,  the list of heroes may be already sorted, annd that would reduce the time complexity to `O (log n)`. 
-   
- ### ANÁLISIS DE COMPLEJIDAD DE CADA FUNCIÓN
-There are various functions in the code:
+  
+### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y determina la complejidad final del programa.
 - `insert` in the `TreeNode`:
- -If the tree is highly unbalanced it can be O(n), and in the best case is O(log(n))
+ -If the tree is highly unbalanced it can be `O(n)`, and in the best case is `O(log(n))`.
 - `displayTree` function in the `TreeNode`:
- -This function performs an in-order traversal of the binary search tree, so the time complexity is O(n)
--Sorting functions in the `DoubleLinkedList` are `sortByPower`, `sortBySpeed`, `sortByTechnique`, `sortByIntelligence`, `sortByCooperativeness`:
- -These sorting functions use the bubble sort algorithm, which has a time complexity of O(n^2) in the worst case. In the best case, if the list is already sorted, the time complexity is O(n).
+ -This function performs an in-order traversal of the binary search tree, so the time complexity is `O(n)`
 - `searchByName` function:
--These function uses Breadth-First-Search.  In the worst case, it needs transverse all nodes, so the complexity is O(n), where n is the number of nodes. 
--In the best case the time complexity is O(1)
+-These function uses Breadth-First-Search.  In the worst case, it needs transverse all nodes, so the complexity is `O(n)`, where n is the number of nodes. 
+-In the best case the time complexity is `O(1)`
 -`uploadOrEditHero` funnction:
 -These functions imply an input/output of heroes, which is generally a low process in comparison with other functions.  
--If the user uploads a new hero, the time complexity is O(1) as it involves only inserting at the end of the list.  
--If the user edits an existing hero, the time complexity is O(n), where n is the number of heros.
-
+  - If the user uploads a new hero, the time complexity is `O(1)` as it involves only inserting at the end of the list.
+  -  If the user edits an existing hero, the time complexity is `O(n)`, where n is the number of heros.
 
   
-## SISCT0303B: IMPLEMENTA ACCIONES CIENTÍFICAS
+## SISCT0303: IMPLEMENTA ACCIONES CIENTÍFICAS
  ### IMPLEMENTA MECANISMOS PARA CONSULTAR INFORMACIÓN DE LAS ESTRUCTURAS CORRECTAS Y ÚTILES DENTRO DE UN PROGRAMA
  The program has an option in which it searches the character by the name in the list. (option 7). Uses a tree to sort the character by student, teacher, pro-hero or villain (option 1). And Linked List to sort (best-worst) by power, speed, technique, intelligence, cooperativeness. (option 2-6).
  
- ### IMPLEMENtA MECANNISMOS DE LECTURA DE ARCHIVOS CORRECTOS Y ÚTILES DENTRO DE UN PROGRAMA 
+ ### IMPLEMENTA MECANNISMOS DE LECTURA DE ARCHIVOS CORRECTOS Y ÚTILES DENTRO DE UN PROGRAMA 
  The characters are register in a `mha.txt` in which are read at the beginning of the program. 
  ``` c++
 ifstream inputFile("mha.txt");
@@ -337,10 +352,119 @@ std::string line;
   
  ### IMPLEMENTA MECANISMOS DE ESCRITURA DE ESCRITURA DE ARCHIVOS CORRECTOS Y ÚTILES DENNTRO DE UN PROGRAMA
 
- *falta implementar*
+ The characters are register in a `mha.txt` in which are read at the beginning of the program, the new hero will be upload in this same file.
 
+In this function the User will choose to edit an exiting hero or upload a new one. 
+  ```c++
+void uploadOrEditHero(TreeNode*& typeTree, DoublyLinkedList& dl) {
+    int choice;
+    cout <<endl;
+    cout << "Choose an option:" << endl;
+    cout << "1. Upload a new hero" << endl;
+    cout << "2. Edit an existing hero" << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
+```
+If the user choose 1, the user will input each feature.
 
+```c++
+    if (choice == 1) {
+            //Upload a new hero
+        string name, type, quirk;
+        int power, speed, technique, intelligence, cooperativeness;
 
+        cout << "Enter the hero's details:" << endl;
+        cout << "Separated by - on compound Name or Quirk ex. Red-Riot, hell-flame"<< endl;
+        cout << "Name: ";
+        cin >> name;
+        [...]
+```
+
+Then create a newHero with the specific attributes of Hero.
+```c++
+        Hero newHero(name, type, quirk, power, speed, technique, intelligence, cooperativeness);
+```
+
+The code will get the value for each character separated by spaces, and save it on `mha.txt`. 
+
+```c++    
+        ofstream outFile("mha.txt", ios::app);
+        if (outFile.is_open()) {
+            outFile << endl << newHero.name << " " << newHero.type << " " << newHero.quirk << " "
+                    << newHero.power << " " << newHero.speed << " " << newHero.technique << " "
+                    << newHero.intelligence << " " << newHero.cooperativeness;
+            outFile.close();
+            cout << "New hero uploaded successfully!" << endl;
+        } else {
+            cerr << "Failed to open the file for writing." << endl;
+        }
+```
+
+If the user choose 2, the user will edit each feature. The user will input the name of the Hero and using the *searchByName* function will search for the Hero in the list. 
+
+```c++ 
+
+else if (choice == 2) {
+        
+        string searchName;
+        cout <<endl << "Enter the name of the hero you want to edit: ";
+        cin >> searchName;
+        
+        Hero* foundHero = searchByName(typeTree, searchName);
+```
+When found the hero info, will be display and then the user will update the hero´s details.
+
+```c++
+        cout << endl;
+        cout << "Hero details before editing:" << endl;
+        displayHeroDetails(*foundHero);
+        cout << endl;
+
+        if (foundHero != nullptr) {
+            // the user to update the hero's details
+            cout << endl;
+            cout << "Enter updated details for " << foundHero->getName() << ":" << endl;
+            cout << endl;
+            cout << "Separated by - on compound Name or Quirk ex. Red-Riot, hell-flame"<< endl;
+            cout << "Name: ";
+
+```
+
+The code will get the value for the character separated by spaces, and save it on `mha.txt`. 
+```c++
+ ofstream outFile("mha.txt");
+            if (outFile.is_open()) {
+                Hero* current = dl.head;
+                while (current != nullptr) {
+                    outFile << current->name << " " << current->type << " " << current->quirk << " "
+                            << current->power << " " << current->speed << " " << current->technique << " "
+                            << current->intelligence << " " << current->cooperativeness << endl;
+                    current = current->next;
+                }
+  outFile.close();
+
+```
+Then it will confirm the update and display the new Hero details or print that failed.
+
+```c++
+                cout << endl << "Hero details updated successfully!" << endl;
+                cout << endl << "Hero details after editing:" << endl;
+                displayHeroDetails(*foundHero);
+            } else {
+                cerr << "Failed to open the file for writing." << endl;
+            }
+```
+
+If the Hero doesn´t exist or is annvalid input it will print:
+
+```c++
+        } else {
+            cout << "Hero not found." << endl;
+        }
+    } else {
+        cout << "Invalid choice." << endl;
+    }
+```
 
 **You can use this repository to access information about My Hero Academia.**
 
