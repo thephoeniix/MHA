@@ -1,4 +1,4 @@
-#include "Hero.cpp"
+#include "Hero.h"
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -83,7 +83,7 @@ do {
         case 2:
             cout << "Heroes sorted by power:" << endl;
             dl.sortByPower();
-            dl.displayList();
+            dl.displayList("power");
 
             system("pause>nul");
             break;
@@ -91,31 +91,29 @@ do {
         case 3:
            cout << "\nHeroes sorted by speed:" << endl;
            dl.sortBySpeed();
-           dl.displayList();
-
+           dl.displayList("speed");
             system("pause>nul");
             break;
 
         case 4:
             cout << "\nHeroes sorted by technique:" << endl;
             dl.sortByTechnique();
-            dl.displayList();
-
+            dl.displayList("technique");
             system("pause>nul");
             break;
 
         case 5:
              cout << "\nHeroes sorted by intelligence:" << endl;
              dl.sortByIntelligence();
-             dl.displayList();
-
+             dl.displayList("intelligence");
             system("pause>nul");
             break;
 
         case 6:
             cout << "\nHeroes sorted by cooperativeness:" << endl;
             dl.sortByCooperativeness();
-            dl.displayList();
+            dl.displayList("cooperativeness");
+
 
             system("pause>nul");
             break;
