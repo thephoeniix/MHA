@@ -69,23 +69,23 @@ To sort the character by type, enter 1 and press enter. The program will then di
 To sort the character by power, enter 2 and press enter. The program will then display a list of all heroes, character by power.
 ```
 Heroes sorted by power:
-Endeavor
-Hawks
-All-Might
-One-For-All
-Mirko
-[...]
+Name: Endeavor, Power: 5
+Name: Hawks, Power: 5
+Name: Fat-Gum, Power: 5
+Name: Mirko, Power: 5
+Name: All-Might, Power: 5
+[...] 
 
 ```
 
 To sort the character by speed, enter 3 and press enter. The program will then display a list of all heroes, character by speed.
 ```
 Heroes sorted by speed:
-Endeavor
-Hawks
-All-Might
-One-For-All
-Gran-Torino
+Name: Endeavor, Speed: 5
+Name: Hawks, Speed: 5
+Name: All-Might, Speed: 5
+Name: One-For-All, Speed: 5
+Name: Gran-Torino, Speed: 5
 [...]
 
 ```
@@ -93,35 +93,33 @@ Gran-Torino
 To sort the character by technique, enter 4 and press enter. The program will then display a list of all characters, sorted by technique.
 ```
 Heroes sorted by technique:
-Endeavor
-Hawks
-All-Might
-One-For-All
-Edgeshot
+Name: Endeavor, Technique: 5
+Name: Hawks, Technique: 5
+Name: All-Might, Technique: 5
+Name: One-For-All, Technique: 5
+Name: Spiderman, Technique: 5
 [...]
-
 ```
 
 To sort the character by intelligence, enter 5 and press enter. The program will then display a list of all characters, sorted by intelligence.
 ```
 Heroes sorted by intelligence:
-Hawks
-All-Might
-One-For-All
-Overhaul
-Endeavor
+Name: Hawks, Intelligence: 5
+Name: All-Might, Intelligence: 5
+Name: One-For-All, Intelligence: 5
+Name: Spiderman, Intelligence: 5
+Name: Overhaul, Intelligence: 5
 [...]
-
 ```
 
 To sort the character by cooperativeness, enter 6 and press enter. The program will then display a list of all characters, sorted by cooperativeness.
 ```
 Heroes sorted by cooperativeness:
-Hawks
-Fat-Gum
-All-Might
-Edgeshot
-Suneater
+Name: Hawks, Cooperativeness: 5
+Name: Spiderman, Cooperativeness: 5
+Name: Fat-Gum, Cooperativeness: 5
+Name: Deku, Cooperativeness: 5
+Name: All-Might, Cooperativeness: 4
 [...]
 
 ```
